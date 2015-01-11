@@ -1,3 +1,5 @@
+var helloworld =12345;
+
 (function() {
   var cubes, list, math, num, number, opposite, race, square,
     __slice = [].slice;
