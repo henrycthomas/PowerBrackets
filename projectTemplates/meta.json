@@ -1,0 +1,10 @@
+{
+    "Web": [
+        {
+            "name": "Project Type 1",
+            "description": "This is a web type project"
+        }
+    ],
+    ".Net C#": [],
+    ".Net VB": []
+}

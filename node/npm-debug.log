@@ -1,0 +1,88 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.35
+4 warn package.json powerbrackets@1.0.1 No repository field.
+5 warn package.json powerbrackets@1.0.1 No README data
+6 verbose readDependencies using package.json deps
+7 verbose install where, deps [ '/Users/henrythomas/Library/Application Support/Brackets/extensions/user/PowerBrackets/node',
+7 verbose install   [ 'less', 'mkpath', 'minify', 'coffee-script', 'node-sass' ] ]
+8 info preinstall powerbrackets@1.0.1
+9 verbose readDependencies using package.json deps
+10 verbose already installed skipping less@2.2.0 /Users/henrythomas/Library/Application Support/Brackets/extensions/user/PowerBrackets/node
+11 verbose already installed skipping mkpath@0.1.00 /Users/henrythomas/Library/Application Support/Brackets/extensions/user/PowerBrackets/node
+12 verbose already installed skipping minify@1.4.6 /Users/henrythomas/Library/Application Support/Brackets/extensions/user/PowerBrackets/node
+13 verbose already installed skipping coffee-script@1.8.0 /Users/henrythomas/Library/Application Support/Brackets/extensions/user/PowerBrackets/node
+14 verbose cache add [ 'node-sass@2.0.0', null ]
+15 verbose cache add name=undefined spec="node-sass@2.0.0" args=["node-sass@2.0.0",null]
+16 verbose parsed url { protocol: null,
+16 verbose parsed url   slashes: null,
+16 verbose parsed url   auth: null,
+16 verbose parsed url   host: null,
+16 verbose parsed url   port: null,
+16 verbose parsed url   hostname: null,
+16 verbose parsed url   hash: null,
+16 verbose parsed url   search: null,
+16 verbose parsed url   query: null,
+16 verbose parsed url   pathname: 'node-sass@2.0.0',
+16 verbose parsed url   path: 'node-sass@2.0.0',
+16 verbose parsed url   href: 'node-sass@2.0.0' }
+17 verbose cache add name="node-sass" spec="2.0.0" args=["node-sass","2.0.0"]
+18 verbose parsed url { protocol: null,
+18 verbose parsed url   slashes: null,
+18 verbose parsed url   auth: null,
+18 verbose parsed url   host: null,
+18 verbose parsed url   port: null,
+18 verbose parsed url   hostname: null,
+18 verbose parsed url   hash: null,
+18 verbose parsed url   search: null,
+18 verbose parsed url   query: null,
+18 verbose parsed url   pathname: '2.0.0',
+18 verbose parsed url   path: '2.0.0',
+18 verbose parsed url   href: '2.0.0' }
+19 verbose addNamed [ 'node-sass', '2.0.0' ]
+20 verbose addNamed [ '2.0.0', '2.0.0' ]
+21 silly lockFile 5f3c2de5-node-sass-2-0-0 node-sass@2.0.0
+22 verbose lock node-sass@2.0.0 /Users/henrythomas/.npm/5f3c2de5-node-sass-2-0-0.lock
+23 verbose request where is /node-sass
+24 verbose request registry https://registry.npmjs.org/
+25 verbose request id 3a275c2a4a894be2
+26 verbose url raw /node-sass
+27 verbose url resolving [ 'https://registry.npmjs.org/', './node-sass' ]
+28 verbose url resolved https://registry.npmjs.org/node-sass
+29 verbose request where is https://registry.npmjs.org/node-sass
+30 info trying registry request attempt 1 at 00:10:17
+31 http GET https://registry.npmjs.org/node-sass
+32 http 200 https://registry.npmjs.org/node-sass
+33 silly registry.get cb [ 200,
+33 silly registry.get   { date: 'Fri, 09 Jan 2015 00:10:18 GMT',
+33 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+33 silly registry.get     etag: '"AR9J5J0OK3WU13MHH3U02RYR2"',
+33 silly registry.get     'content-type': 'application/json',
+33 silly registry.get     'cache-control': 'max-age=60',
+33 silly registry.get     'content-length': '101929',
+33 silly registry.get     'accept-ranges': 'bytes',
+33 silly registry.get     via: '1.1 varnish',
+33 silly registry.get     age: '0',
+33 silly registry.get     'x-served-by': 'cache-lcy1132-LCY',
+33 silly registry.get     'x-cache': 'HIT',
+33 silly registry.get     'x-cache-hits': '1',
+33 silly registry.get     'x-timer': 'S1420762217.692836,VS0,VE317',
+33 silly registry.get     vary: 'Accept',
+33 silly registry.get     'keep-alive': 'timeout=10, max=50',
+33 silly registry.get     connection: 'Keep-Alive' } ]
+34 silly lockFile 5f3c2de5-node-sass-2-0-0 node-sass@2.0.0
+35 silly lockFile 5f3c2de5-node-sass-2-0-0 node-sass@2.0.0
+36 error Error: version not found: node-sass@2.0.0
+36 error     at /usr/local/lib/node_modules/npm/lib/cache/add-named.js:125:12
+36 error     at saved (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/get.js:167:7)
+36 error     at Object.oncomplete (fs.js:108:15)
+37 error If you need help, you may report this *entire* log,
+37 error including the npm and node versions, at:
+37 error     <http://github.com/npm/npm/issues>
+38 error System Darwin 14.0.0
+39 error command "node" "/usr/local/bin/npm" "install"
+40 error cwd /Users/henrythomas/Library/Application Support/Brackets/extensions/user/PowerBrackets/node
+41 error node -v v0.10.35
+42 error npm -v 1.4.28
+43 verbose exit [ 1, true ]

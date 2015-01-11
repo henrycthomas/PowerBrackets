@@ -1,0 +1,16 @@
+<div class="powerbrackets new-project-modal modal">
+    <div class="modal-body no-padding table-striped tab-content">
+        <ul class="list-group templateGroups">
+            {{#templateGroups}}
+                <li class="list-group-item">
+                    <span class="badge">{{total}}</span>
+                    {{name}}
+                  </li> 
+            {{/templateGroups}}
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <input type="text" id="newProjectName" placeholder="New Project Name" />
+        <button class="dialog-button btn primary" data-button-id="close">Create in...</button>
+    </div>
+</div>

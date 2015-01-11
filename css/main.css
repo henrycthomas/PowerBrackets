@@ -1,0 +1,16 @@
+.powerbrackets.new-project-modal .templateGroups {
+  width: 33%;
+  background-color: white;
+  list-style-type: none;
+  margin: 0;
+}
+.powerbrackets.new-project-modal .templateGroups li {
+  padding: 10px;
+  cursor: pointer;
+}
+.powerbrackets.new-project-modal .templateGroups li:hover {
+  background-color: grey;
+}
+.powerbrackets.new-project-modal .templateGroups li .badge {
+  float: right;
+}
