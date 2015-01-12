@@ -7,7 +7,8 @@
         minify = require('minify'),
         coffee = require('coffee-script'),
        // sass = require('node-sass'),
-        markdown = require( "markdown" ).markdown;
+        markdown = require( "markdown" ).markdown,
+        handlebars = require("handlebars");
 
 
     function cmdCompileMarkdown(filePath, callback){
@@ -20,6 +21,24 @@
                 fs.writeFile(htmlPath, html, function(err){
                     if(err) callback(err);
                     cmdMinify(htmlPath, callback);
+                });
+            });
+        });
+    }
+    
+    function cmdCompileHandlebars(filePath, callback){
+        console.log(filePath);
+        fs.readFile(filePath, function(err, data){
+            if(err) callback(err);
+            var jsPath = replaceExtension(filePath, "handlebars.js");
+            console.log(jsPath);
+            var js = "var " + path.basename(filePath).split('.')[0] + " = Handlebars.template(" + handlebars.precompile(data.toString()) + ");";
+            console.log(js);
+            mkpath(path.dirname(jsPath), function(err){
+                if(err) callback(err);
+                fs.writeFile(jsPath, js, function(err){
+                    if(err) callback(err);
+                    cmdMinify(jsPath, callback);
                 });
             });
         });
@@ -114,6 +133,14 @@
             cmdCompileLess,   // command handler function
             true,          // this command is asynchronous in Node
             "returns css comiled from less file",
+            ["filePath"]
+        );
+        domainManager.registerCommand(
+            "powerbrackets",       // domain name
+            "compileHandlebars",    // command name
+            cmdCompileHandlebars,   // command handler function
+            true,          // this command is asynchronous in Node
+            "returns js comiled from handlebars file",
             ["filePath"]
         );
        /* domainManager.registerCommand(

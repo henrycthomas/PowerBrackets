@@ -29,8 +29,9 @@ define(function (require, exports, module) {
         COFFEE_COMPILE_CMD = "powerbrackets.compilecoffee",
         //SASS_COMPILE_CMD = "powerbrackets.compilesass",
         MARKDOWN_COMPILE_CMD = "powerbrackets.compilemarkdown",
-        NEW_PROJECT_CMD = "powerbrackets.newproject";
-    var commands = [ LESS_COMPILE_CMD, MINIFY_CMD, COFFEE_COMPILE_CMD, /*SASS_COMPILE_CMD,*/ MARKDOWN_COMPILE_CMD, NEW_PROJECT_CMD ];
+        NEW_PROJECT_CMD = "powerbrackets.newproject",
+        HANDLEBARS_COMPILE_CMD = "powerbrackets.compilehandlebars";
+    var commands = [ LESS_COMPILE_CMD, MINIFY_CMD, COFFEE_COMPILE_CMD, /*SASS_COMPILE_CMD,*/ MARKDOWN_COMPILE_CMD, NEW_PROJECT_CMD, HANDLEBARS_COMPILE_CMD ];
     
     function removeAllCommandsFromMenu(menu) {
         var i;
@@ -79,6 +80,16 @@ define(function (require, exports, module) {
                 console.error("[Power Brackets] failed to run powerbrackets.compileCoffee", err);
             });
     }
+    
+    function compileHandlebars(){
+        var selectedEntry = ProjectManager.getSelectedItem();
+        nodeDomain.exec("compileHandlebars", selectedEntry.fullPath)
+            .done(function (callback) {
+                //done!
+            }).fail(function (err) {
+                console.error("[Power Brackets] failed to run powerbrackets.compileHandlebars", err);
+            });
+    }
     function compileMarkdown(){
         var selectedEntry = ProjectManager.getSelectedItem();
         nodeDomain.exec("compileMarkdown", selectedEntry.fullPath)
@@ -121,6 +132,7 @@ ExtensionUtils.loadStyleSheet(module, "css/main.css");
     CommandManager.register("Compile to js", COFFEE_COMPILE_CMD, compileCoffee);
     CommandManager.register("Compile to html", MARKDOWN_COMPILE_CMD, compileMarkdown);
     CommandManager.register("New Project", NEW_PROJECT_CMD, openProjectSelector);
+    CommandManager.register("Compile to js", HANDLEBARS_COMPILE_CMD, compileHandlebars);
     //CommandManager.register("Compile to sass", SASS_COMPILE_CMD, compileSass);
     // Then create a menu item bound to the command
     // The label of the menu item is the name we gave the command (see above)
@@ -156,6 +168,10 @@ ExtensionUtils.loadStyleSheet(module, "css/main.css");
         case "mdtext":
         case "text":
             contextMenu.addMenuItem(MARKDOWN_COMPILE_CMD);
+            break;
+        case "handlebars":
+        case "hbs":
+            contextMenu.addMenuItem(HANDLEBARS_COMPILE_CMD);
             break;
         /*case "sass":
             contextMenu.addMenuItem(SASS_COMPILE_CMD);
