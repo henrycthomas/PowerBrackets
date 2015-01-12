@@ -6,7 +6,6 @@
         mkpath = require('mkpath'),
         minify = require('minify'),
         coffee = require('coffee-script'),
-       // sass = require('node-sass'),
         markdown = require( "markdown" ).markdown,
         handlebars = require("handlebars");
 
@@ -44,31 +43,6 @@
         });
     }
     
-    /*function cmdCompileSass(filePath, callback){
-        fs.readFile(filePath, function(err, data){
-            if(err) callback(err);
-            sass.render({
-                data: data.toString(),
-                success: function(output){
-                    var containingPath = path.dirname(filePath),
-                        cssPath = path.resolve(containingPath, replaceExtension(path.basename(filePath), "css")),
-                        minCssPath = path.resolve(containingPath, replaceExtension(path.basename(filePath), "min.css"));
-                    
-                    mkpath(path.dirname(cssPath), function (err) {
-                      if (err) {
-                        callback(err);
-                      }
-                      fs.writeFile(cssPath, output.css, function(err){
-                        if(err) callback(err);
-
-                        cmdMinify(cssPath, callback);
-                      });
-                    });
-                },
-                error: callback
-            });
-        });
-    }*/
     
     function cmdCompileLess(filePath, callback) {
         fs.readFile(filePath, function(err, data){
@@ -143,14 +117,6 @@
             "returns js comiled from handlebars file",
             ["filePath"]
         );
-       /* domainManager.registerCommand(
-            "powerbrackets",       // domain name
-            "compileSass",    // command name
-            cmdCompileSass,   // command handler function
-            true,          // this command is asynchronous in Node
-            "returns css comiled from sass file",
-            ["filePath"]
-        );*/
         domainManager.registerCommand(
             "powerbrackets",       // domain name
             "compileCoffee",    // command name
