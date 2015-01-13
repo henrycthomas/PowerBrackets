@@ -184,6 +184,9 @@ ExtensionUtils.loadStyleSheet(module, "css/main.css");
             case "gitignore":
                 return $('<i class="fa fa-ban"></i>');
                 break;
+                case "js":
+                return $('<i class="fa fa-code"></i>');
+                break;
             default:
                 return $('<i class="fa fa-file-o"></i>');
                 
