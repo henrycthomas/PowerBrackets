@@ -7,8 +7,24 @@
         minify = require('minify'),
         coffee = require('coffee-script'),
         markdown = require( "markdown" ).markdown,
-        handlebars = require("handlebars");
+        handlebars = require("handlebars"),
+        reactTools = require('react-tools');
 
+    
+    function cmdCompileReact(filePath, callback){
+        fs.readFile(filePath, function(err, data){
+            if(err) callback(err);
+            var jsPath = replaceExtension(filePath, "js"),
+                js = reactTools.transformWithDetails(data.toString());
+            mkpath(path.dirname(jsPath), function(err){
+                if(err) callback(err);
+                fs.writeFile(jsPath, js.code, function(err){
+                    if(err) callback(err);
+                    cmdMinify(jsPath, callback);
+                });
+            });
+        });
+    }
 
     function cmdCompileMarkdown(filePath, callback){
         fs.readFile(filePath, function(err, data){
@@ -107,6 +123,14 @@
             cmdCompileLess,   // command handler function
             true,          // this command is asynchronous in Node
             "returns css comiled from less file",
+            ["filePath"]
+        );
+        domainManager.registerCommand(
+            "powerbrackets",       // domain name
+            "compileReact",    // command name
+            cmdCompileReact,   // command handler function
+            true,          // this command is asynchronous in Node
+            "returns js comiled from jsx file",
             ["filePath"]
         );
         domainManager.registerCommand(

@@ -31,8 +31,18 @@ define(function (require, exports, module) {
         COFFEE_COMPILE_CMD = "powerbrackets.compilecoffee",
         MARKDOWN_COMPILE_CMD = "powerbrackets.compilemarkdown",
         NEW_PROJECT_CMD = "powerbrackets.newproject",
-        HANDLEBARS_COMPILE_CMD = "powerbrackets.compilehandlebars";
-    var commands = [ LESS_COMPILE_CMD, MINIFY_CMD, COFFEE_COMPILE_CMD, MARKDOWN_COMPILE_CMD, NEW_PROJECT_CMD, HANDLEBARS_COMPILE_CMD ];
+        HANDLEBARS_COMPILE_CMD = "powerbrackets.compilehandlebars",
+        REACT_COMPILE_CMD = "powerbrackets.compilereact";
+    
+    var commands = [ 
+        LESS_COMPILE_CMD, 
+        MINIFY_CMD, 
+        COFFEE_COMPILE_CMD, 
+        MARKDOWN_COMPILE_CMD, 
+        NEW_PROJECT_CMD, 
+        HANDLEBARS_COMPILE_CMD,
+        REACT_COMPILE_CMD
+    ];
     
     function removeAllCommandsFromMenu(menu) {
         var i;
@@ -62,6 +72,13 @@ define(function (require, exports, module) {
             });
     }
     
+    function compileReact(){
+        var selectedEntry = ProjectManager.getSelectedItem();
+        nodeDomain.exec("compileReact", selectedEntry.fullPath)
+        .done(function(callback){}).fail(function(err){
+            console.error("[Power Brackets] failed to run powerbrackets.compileReact");
+        });
+    }
     
     function compileCoffee() {
         var selectedEntry = ProjectManager.getSelectedItem();
@@ -126,7 +143,8 @@ ExtensionUtils.loadStyleSheet(module, "css/main.css");
     CommandManager.register("Compile to html", MARKDOWN_COMPILE_CMD, compileMarkdown);
     CommandManager.register("New Project", NEW_PROJECT_CMD, openProjectSelector);
     CommandManager.register("Compile to js", HANDLEBARS_COMPILE_CMD, compileHandlebars);
-  
+    CommandManager.register("Compile to js", REACT_COMPILE_CMD, compileReact);
+    
     var contextMenu = Menus.getContextMenu(Menus.ContextMenuIds.PROJECT_MENU);
     
     $(contextMenu).on("beforeContextMenuOpen", function () {
@@ -146,7 +164,9 @@ ExtensionUtils.loadStyleSheet(module, "css/main.css");
         case "coffee":
             contextMenu.addMenuItem(COFFEE_COMPILE_CMD);
             break;
-
+        case "jsx":
+            contextMenu.addMenuItem(REACT_COMPILE_CMD);
+            break;
         case "markdown":
         case "mdown":
         case "mkdn":
