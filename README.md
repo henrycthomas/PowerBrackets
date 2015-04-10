@@ -15,5 +15,5 @@ Power Brackets is still a work in progress,, but some of the current features in
 - Markdown Compiler
 - React Compiler
 - File tree and working view icons (thankyou [Font Awesome by Dave Gandy](http://fortawesome.github.io/)) - in progress
-- New project command - in progress
+
  
